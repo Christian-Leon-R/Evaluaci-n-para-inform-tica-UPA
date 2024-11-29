@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Usuario</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="formulario.js"></script>
+</head>
+<body>
+    <div class="background">
+        <header class="header">
+            <div class="logo">Formulario de Registro</div>
+            <nav class="nav">
+                <a href="../index/index.html" class="btn btn-secondary">Inicio</a>
+                <a href="../reportes/reportes.html" class="btn btn-secondary">Reportes</a>
+            </nav>
+        </header>
+
+        <main class="main-content">
+            <h1 class="title">Registro de Usuario</h1>
+            <form id="formRegistro" class="form">
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+                    <small class="error" id="errorNombre"></small>
+                </div>
+                <div class="form-group">
+                    <label for="fechaNacimiento">Fecha de Nacimiento (dd-mm-YYYY):</label>
+                    <input type="text" id="fechaNacimiento" name="fechaNacimiento" placeholder="01-01-2000" required>
+                    <small class="error" id="errorFecha"></small>
+                </div>
+                <div class="form-group">
+                    <label for="telefono">Teléfono:</label>
+                    <input type="text" id="telefono" name="telefono" placeholder="1234567890" required>
+                    <small class="error" id="errorTelefono"></small>
+                </div>
+                <div class="form-group">
+                    <label for="correo">Correo Electrónico:</label>
+                    <input type="email" id="correo" name="correo" placeholder="correo@ejemplo.com" required>
+                    <small class="error" id="errorCorreo"></small>
+                </div>
+                <div class="form-group">
+                    <label>Edad:</label>
+                    <span id="edad">0 años</span>
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
+        </main>
+    </div>
+</body>
+</html>
