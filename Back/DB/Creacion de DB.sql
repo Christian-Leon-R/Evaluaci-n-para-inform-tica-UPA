@@ -1,8 +1,8 @@
 -- Crear la base de datos
-CREATE DATABASE Christian_Alejandro_León_Rabanales;
+CREATE DATABASE evaluacion_nombre_evaluado;
 
 -- Usar la base de datos
-USE Christian_Alejandro_León_Rabanales;
+USE evaluacion_nombre_evaluado;
 
 -- Crear la tabla EstadoUsuario
 CREATE TABLE EstadoUsuario (
