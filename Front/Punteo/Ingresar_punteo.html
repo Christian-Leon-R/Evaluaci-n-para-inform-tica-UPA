@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Punteos</title>
+    <link rel="stylesheet" href="Ingresar_punteo.css">
+    <script defer src="Ingresar_punteo.js"></script>
+</head>
+<body>
+    <div class="background">
+        <header class="header">
+            <div class="logo">Registro de Punteos</div>
+            <nav class="nav">
+                <a href="../index/index.html" class="btn btn-secondary">Inicio</a>
+                <a href="../reportes/reportes.html" class="btn btn-secondary">Reportes</a>
+            </nav>
+        </header>
+
+        <main class="main-content">
+            <h1 class="title">Registro de Punteos</h1>
+            <form id="formPunteo" class="form">
+                <div class="form-group">
+                    <label for="correo">Correo Electrónico:</label>
+                    <input type="email" id="correo" name="correo" placeholder="correo@ejemplo.com" required>
+                    <small class="error" id="errorCorreo"></small>
+                </div>
+                <div class="form-group">
+                    <label for="punteo">Punteo:</label>
+                    <input type="text" id="punteo" name="punteo" placeholder="1 - 100" required>
+                    <small class="error" id="errorpunteo"></small>
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
+        </main>
+    </div>
+</body>
+</html>
