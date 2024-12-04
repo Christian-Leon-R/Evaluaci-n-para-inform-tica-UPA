@@ -131,3 +131,42 @@ const obtenerUsuariosEnBaja = async () => {
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
+
+app.post('/guardar_punteo', async (req, res) => {
+    const { nombre, fecha, telefono, correo } = req.body;
+
+    const validarCorreo = (correo) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo);
+    const ValidarPunteo = (punteo) => /^[(punteo < 1 || punteo >100)]+$/ .test(punteo);
+
+    if (!correo || !punteo ) {
+        return res.status(400).json({ error: 'Todos los campos son obligatorios.' });
+    }
+
+    if (!validarNombre(correo)) {
+        return res.status(400).json({ error: 'El nombre solo puede contener letras y espacios.' });
+    }
+
+    if (!validarFecha(punteo)) {
+        return res.status(400).json({ error: 'El punteo no puede ser menor a 1, pero tampoco mayor a 100.' });
+    }
+
+    try {
+        const [Id_usurio] = await pool.query('SELECT id FROM usuario WHERE correo = '+'"'+ correo +'"');
+        if (estado.length === 0) {
+            return res.status(500).json({ error: 'No se encontró el correo ingresado dentro de la base de datos.' });
+        }
+
+        const estadoId = estado[0].id;
+
+        const [resultado] = await pool.query(
+            'INSERT INTO punteo_usuario (Id_usurio, punteo) VALUES (?, ?)',
+            [Id_usurio, punteo]
+        );
+
+        res.status(201).json({ message: 'Punteo almacenado con éxito.', id: resultado.insertId });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Error al guardar el punteo en la base de datos.' });
+    }
+});
+

@@ -36,4 +36,27 @@ document.addEventListener("DOMContentLoaded", () => {
             mostrarError(punteoInput, "El punteo no puede ser menor a 1, pero tampoco mayor a 100.");
             return;
         }
-})})
+        limpiarErrores(punteoInput);
+        try {
+            const respuesta = await fetch("http://localhost:3000/guardar_punteo", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({correo,punteo}),
+            });
+
+            if (respuesta.ok) {
+                const data = await respuesta.json();
+                alert(`Usuario registrado con éxito. ID: ${data.id}`);
+                form.reset();
+            } else {
+                const error = await respuesta.json();
+                alert(`Error en el servidor: ${error.message}`);
+            }
+        } catch (error) {
+            alert("Error al conectar con el servidor. Intenta nuevamente.");
+        }
+    });
+
+});
