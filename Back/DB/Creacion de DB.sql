@@ -1,8 +1,8 @@
 -- Crear la base de datos
-CREATE DATABASE evaluacion_nombre_evaluado;
+CREATE DATABASE Christian_Alejandro_León_Rabanales;
 
 -- Usar la base de datos
-USE evaluacion_nombre_evaluado;
+USE Christian_Alejandro_León_Rabanales;
 
 -- Crear la tabla EstadoUsuario
 CREATE TABLE EstadoUsuario (
@@ -23,8 +23,17 @@ CREATE TABLE usuario (
     FOREIGN KEY (EstadoUsuarioId) REFERENCES EstadoUsuario(id)
 );
 
+-- Crear la tabla Punteo_Usuario
+CREATE TABLE Punteo_Usuario (
+    Id_Punteo INT AUTO_INCREMENT PRIMARY KEY,
+    Id_Usuario INT NOT NULL,
+    Punteo_Usuario INT NOT NULL DEFAULT,
+    Fecha_Ingreso  DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (Id_Usuario) REFERENCES usuario(id)
+
 -- Insertar los valores iniciales en EstadoUsuario
 INSERT INTO EstadoUsuario (titulo, clave)
 VALUES
 ('Activo', 'activo'),
 ('Baja Permanente', 'baja');
+
